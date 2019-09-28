@@ -1,12 +1,16 @@
 import React from 'react';
-import { Menu, Layout } from 'antd';
-import { Link } from 'react-router-dom';
+import {Menu, Layout} from 'antd';
+import {Link, RouteComponentProps} from 'react-router-dom';
 
-const { Header } = Layout;
+const {Header} = Layout;
 
-export default class NavigationHeader extends React.Component {
+export default class NavigationHeader extends React.Component<RouteComponentProps> {
+  currentFirstLevelRoute(): string {
+    return this.props.location.pathname.split('/')[1];
+  }
+
   render() {
-    console.log(this.props);
+    const activeRoute = this.currentFirstLevelRoute();
     return (
       <Header className="header">
         <Link to="/">
@@ -21,9 +25,10 @@ export default class NavigationHeader extends React.Component {
         <Menu
           theme="dark"
           mode="horizontal"
-          style={{ lineHeight: '64px' }}
+          style={{lineHeight: '64px'}}
+          selectedKeys={[activeRoute]}
         >
-          <Menu.Item key="inventory">Inventory</Menu.Item>
+          <Menu.Item key="inventory"><Link to="/inventory">Inventory</Link></Menu.Item>
           <Menu.Item key="training">Training Scheduling</Menu.Item>
           <Menu.Item key="admin">Management</Menu.Item>
         </Menu>

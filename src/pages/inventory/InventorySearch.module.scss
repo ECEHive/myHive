@@ -1,0 +1,11 @@
+.centerOuterContainer {
+  height: 100%;
+  display: flex;
+  position: relative;
+  flex-direction: column;
+}
+
+.inventoryTitle {
+  text-align: center;
+  font-size: 24px;
+}

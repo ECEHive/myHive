@@ -18,6 +18,8 @@
   },
   "rules": {
     "@typescript-eslint/explicit-function-return-type": "off",
+    "@typescript-eslint/no-unused-vars": "warn",
+    "object-curly-spacing": "off",
     "semi": [
       "error",
       "always"
