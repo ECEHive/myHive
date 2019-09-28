@@ -1,8 +1,10 @@
-/* eslint-disable */
-
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+import Root from './layout/Root';
+import 'antd/dist/antd.css';
+import { configureStore, history } from './store/configureStore';
 
-ReactDOM.render(<App/>, document.getElementById('root'));
+const store = configureStore();
+
+ReactDOM.render(<Root store={store} history={history}/>, document.getElementById('root'));
