@@ -30,7 +30,7 @@ export default class NavigationHeader extends React.Component<RouteComponentProp
         >
           <Menu.Item key="inventory"><Link to="/inventory">Inventory</Link></Menu.Item>
           <Menu.Item key="training">Training Scheduling</Menu.Item>
-          <Menu.Item key="admin">Management</Menu.Item>
+          <Menu.Item key="admin"><Link to="/admin">Management</Link></Menu.Item>
         </Menu>
       </Header>
     );
