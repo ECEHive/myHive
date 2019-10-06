@@ -1,6 +1,7 @@
 import React from 'react';
 import {Layout, Menu, Icon} from 'antd';
 import {RouteComponentProps} from 'react-router';
+import {Link} from 'react-router-dom';
 
 const {SubMenu} = Menu;
 const {Sider, Content} = Layout;
@@ -19,7 +20,10 @@ export default class AdminSiderMenu extends React.Component<RouteComponentProps>
           style={{height: '100%'}}
           theme="dark"
         >
-          <Menu.Item key="inventory"><Icon type="code-sandbox"/> Inventory</Menu.Item>
+          <Menu.Item key="inventory"><Link to={`${match.path}/inventory`}><Icon
+            type="code-sandbox"/> Inventory</Link></Menu.Item>
+          <Menu.Item key="workbench"><Link to={`${match.path}/workbench`}><Icon
+            type="database"/> Workbench</Link></Menu.Item>
         </Menu>
       </Sider>
     );

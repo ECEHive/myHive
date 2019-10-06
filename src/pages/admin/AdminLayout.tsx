@@ -2,6 +2,7 @@ import React from 'react';
 import {Layout} from 'antd';
 import AdminSiderMenu from './AdminSiderMenu';
 import {Redirect, Route, RouteComponentProps, Switch} from 'react-router';
+import WorkbenchList from './workbench/WorkbenchList';
 
 const {Content} = Layout;
 
@@ -14,6 +15,7 @@ export default class AdminLayout extends React.Component<RouteComponentProps> {
         <Content style={{padding: '24px 24px', height: '100%'}}>
           <Switch>
             <Route path={`${match.path}/inventory`}/>
+            <Route path={`${match.path}/workbench`} component={WorkbenchList}/>
             <Redirect to={`${match.path}/inventory`}/>
           </Switch>
         </Content>
