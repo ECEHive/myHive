@@ -1,8 +1,8 @@
-import {Action} from 'redux';
-import {IWorkbench} from '../../model/Workbench';
+import { Action } from 'redux';
+import { IHiveWorkbench } from '../../model/Workbench';
 
 export interface WorkbenchState {
-  workbenches: IWorkbench[]
+  workbenches: IHiveWorkbench[]
 }
 
 const defaultValue: WorkbenchState = {

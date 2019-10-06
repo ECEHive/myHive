@@ -1,4 +1,4 @@
-import {ResponseObject, sharedAxios} from './MyHiveAPI';
+import { ResponseObject, sharedAxios } from './MyHiveAPI';
 
 export interface HiveUserEntity {
   id: number
@@ -20,14 +20,10 @@ export type FindUserResponse = ResponseObject<HiveUserEntity>;
 
 export default {
   async findUserByUniqueIdentifier(uniqueIdentifier: string): Promise<FindUserResponse> {
-    try {
-      const result = await sharedAxios.post('/user/find', {
-        uniqueIdentifier
-      });
-      return result.data;
-    } catch (e) {
-      throw e;
-    }
+    const result = await sharedAxios.post('/user/find', {
+      uniqueIdentifier
+    });
+    return result.data;
   },
 
   // Upsert: Update + Insert
@@ -35,14 +31,10 @@ export default {
     uniqueIdentifier: string,
     user: HiveUserEntity
   ): Promise<ResponseObject<HiveUserEntity>> {
-    try {
-      const result = await sharedAxios.put('/user/upsert', {
-        UniqueIdentifier: uniqueIdentifier,
-        patch: user
-      });
-      return result.data;
-    } catch (e) {
-      throw e;
-    }
+    const result = await sharedAxios.put('/user/upsert', {
+      UniqueIdentifier: uniqueIdentifier,
+      patch: user
+    });
+    return result.data;
   }
 };
