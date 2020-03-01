@@ -1,16 +1,21 @@
 import {ResponseObject, sharedAxios} from './MyHiveAPI';
 import {IHiveInventoryItemClass} from '../model/Inventory';
+import {CheckoutRecord} from './checkout';
 
 export default {
   async upsertInventoryItemClass(item: IHiveInventoryItemClass): Promise<ResponseObject<IHiveInventoryItemClass>> {
-    const data = await sharedAxios.put('/inventory/class/upsert', item);
-    return data.data;
+    const response = await sharedAxios.put('/inventory/class/upsert', item);
+    return response.data;
   },
   async listInventoryCheckoutItems(): Promise<String[]> {
-    const data = await sharedAxios.get('/v1/inventory/checkout/items');
-    return data.data.data.map((obj: any) => {
+    const response = await sharedAxios.get('/v1/inventory/checkout/items');
+    return response.data.data.map((obj: any) => {
       return obj.ItemName;
     });
+  },
+  async listCheckoutRecords(): Promise<ResponseObject<CheckoutRecord[]>> {
+    const response = await sharedAxios.get('v1/inventory/checkout/list');
+    return response.data;
   },
   async listInventoryItemClass(page = 0, pageSize: number = 100): Promise<ResponseObject<IHiveInventoryItemClass[]>> {
     const data = await sharedAxios.get('/inventory/class/list', {
