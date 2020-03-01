@@ -1,6 +1,6 @@
 import React from 'react';
 import {Route, RouteComponentProps, Switch} from 'react-router';
-import InventorySearch from './InventorySearch';
+import InventorySearch from './NewCheckoutForm';
 import InventoryDetail from './InventoryDetail';
 
 export default class InventoryIndex extends React.Component<RouteComponentProps> {

@@ -3,7 +3,7 @@ import {Redirect, Route, Switch} from 'react-router-dom';
 import {Layout} from 'antd';
 import './App.scss';
 import NavigationHeader from './layout/NavigationHeader';
-import InventoryIndex from './pages/inventory/InventoryIndex';
+import InventoryLayout from './pages/inventory/InventoryLayout';
 import Error404Page from './layout/Error404Page';
 import AdminLayout from './pages/admin/AdminLayout';
 
@@ -18,7 +18,7 @@ const App: React.FC = () => {
           <Switch>
             <Redirect exact from="/" to="/inventory"/>
 
-            <Route path="/inventory" component={InventoryIndex}/>
+            <Route path="/inventory" component={InventoryLayout}/>
             <Route path="/admin" component={AdminLayout}/>
 
             <Route exact path="/404" component={Error404Page}/>

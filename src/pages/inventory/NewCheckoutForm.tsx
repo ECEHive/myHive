@@ -2,10 +2,10 @@ import React, { Props } from 'react';
 
 import api from '../../api/inventory';
 
-import styles from './InventorySearch.module.scss';
+import styles from './NewCheckoutForm.module.scss';
 import {Button, Col, Row, Input, AutoComplete} from 'antd';
 
-export default class InventorySearch extends React.Component<any, any> {
+export default class NewCheckoutForm extends React.Component<any, any> {
   constructor(param: Props<any>) {
     super(param);
 
