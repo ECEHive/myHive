@@ -3,6 +3,10 @@ import {IHiveInventoryItemClass} from '../model/Inventory';
 import {CheckoutRecord} from './checkout';
 
 export default {
+  async checkout(record: CheckoutRecord): Promise<ResponseObject<CheckoutRecord>> {
+    const response = await sharedAxios.post('v1/inventory/checkout/new', record);
+    return response.data;
+  },
   async upsertInventoryItemClass(item: IHiveInventoryItemClass): Promise<ResponseObject<IHiveInventoryItemClass>> {
     const response = await sharedAxios.put('/inventory/class/upsert', item);
     return response.data;

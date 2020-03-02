@@ -1,5 +1,6 @@
 import React from 'react';
-import {Layout, Menu, Icon} from 'antd';
+import {Layout, Menu} from 'antd';
+import {DatabaseOutlined, ExportOutlined} from '@ant-design/icons';
 import {RouteComponentProps} from 'react-router';
 import {Link} from 'react-router-dom';
 
@@ -20,10 +21,8 @@ export default class InventorySiderMenu extends React.Component<RouteComponentPr
           style={{height: '100%'}}
           theme="dark"
         >
-          <Menu.Item key="newcheckout"><Link to={`${match.path}/new-checkout`}><Icon
-            type="export" /> New Checkout  </Link></Menu.Item>
-          <Menu.Item key="updatecheckout"><Link to={`${match.path}/update-checkout`}><Icon
-            type="database"/> Update Checkout</Link></Menu.Item>
+          <Menu.Item key="newcheckout"><Link to={`${match.path}/new-checkout`}><ExportOutlined /> New Checkout  </Link></Menu.Item>
+          <Menu.Item key="updatecheckout"><Link to={`${match.path}/update-checkout`}><DatabaseOutlined /> Update Checkout</Link></Menu.Item>
         </Menu>
       </Sider>
     );

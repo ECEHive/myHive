@@ -19,7 +19,6 @@ export default class NewCheckoutForm extends React.Component<any, any> {
     (async() => {
       try {
         const a = await api.listInventoryCheckoutItems();
-        // console.log(a);
         this.setState({
           dataSource: a
         });
@@ -28,8 +27,14 @@ export default class NewCheckoutForm extends React.Component<any, any> {
     })();
   }
 
-  handleSubmit = (e: any) => {
-    console.log('handleButtonClick');
+  onFinish = async(record: any) => {
+    console.log('Success:', record);
+    const response = await api.checkout(record);
+    console.log(response);
+  };
+
+  onFinishFailed = (e: any) => {
+    console.log('Failed:', e);
   };
 
   render() {
@@ -45,19 +50,24 @@ export default class NewCheckoutForm extends React.Component<any, any> {
     return (
       <div className="hive-container">
         <div className={styles.centerOuterContainer}>
-          <Row type="flex" justify="center">
+          <Row justify="center">
             <Col span={20} className={styles.inventoryTitle}>
               <h2>Checkout Form</h2>
             </Col>
           </Row>
-          <Row type="flex" className={styles.inventorySearchBar}>
+          <Row className={styles.inventorySearchBar}>
             <Col span={20}>
               <Form
                 {...layout}
-                onSubmit={this.handleSubmit}
+                onFinish={this.onFinish}
+                onFinishFailed={this.onFinishFailed}
+                initialValues={{ remember: true }}
+                name='checkoutForm'
               >
                 <Form.Item
+                  rules={[{ required: true }]}
                   label='Item'
+                  name='Item'
                 >
                   <AutoComplete
                     dataSource={this.state.dataSource}
@@ -68,10 +78,13 @@ export default class NewCheckoutForm extends React.Component<any, any> {
                   />
                 </Form.Item>
                 <Form.Item
-                  label='End User Name'
+                  style={{ marginBottom: 0 }}
+                  label='Borrower'
                 >
                   <Form.Item
                     style={{ display: 'inline-block', width: 'calc(50% - 5px)', marginRight: 8 }}
+                    rules={[{ required: true }]}
+                    name='FirstName'
                   >
                     <Input
                       placeholder='First Name'
@@ -79,6 +92,8 @@ export default class NewCheckoutForm extends React.Component<any, any> {
                   </Form.Item>
                   <Form.Item
                     style={{ display: 'inline-block', width: 'calc(50% - 5px)' }}
+                    rules={[{ required: true }]}
+                    name='LastName'
                   >
                     <Input
                       placeholder='Last Name'
@@ -86,7 +101,18 @@ export default class NewCheckoutForm extends React.Component<any, any> {
                   </Form.Item>
                 </Form.Item>
                 <Form.Item
+                  rules={[{ required: true, type: 'email' }]}
+                  label='Email'
+                  name='Email'
+                >
+                  <Input
+                    placeholder='a@b.com'
+                  />
+                </Form.Item>
+                <Form.Item
+                  rules={[{ required: true }]}
                   label='Checkout PI'
+                  name='CheckoutPI'
                 >
                   <Input
                     placeholder='George P. Burdell'
@@ -106,5 +132,5 @@ export default class NewCheckoutForm extends React.Component<any, any> {
   }
 }
 
-// class Complete extends React.Component {
-// }
+class Complete extends React.Component {
+}

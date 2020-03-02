@@ -96,19 +96,19 @@ export default class UpdateCheckoutPage extends React.Component {
                 title={<a href="https://ant.design">{record.FirstName.concat(' ', record.LastName)}</a>}
                 description={
                   <div>
-                    <Row type="flex" justify="start">
+                    <Row justify="start">
                       <Col span={6}>Item:</Col>
                       <Col span={4}>{record.Item}</Col>
                     </Row>
-                    <Row type="flex" justify="start">
+                    <Row justify="start">
                       <Col span={6}>Status:</Col>
                       <Col span={4}>{record.Status}</Col>
                     </Row>
-                    <Row type="flex" justify="start">
+                    <Row justify="start">
                       <Col span={6}>Checkout Date:</Col>
                       <Col span={4}>{record.CheckoutDate}</Col>
                     </Row>
-                    <Row type="flex" justify="start">
+                    <Row justify="start">
                       <Col span={6}>Checkout PI:</Col>
                       <Col span={4}>{record.CheckoutPI}</Col>
                     </Row>
